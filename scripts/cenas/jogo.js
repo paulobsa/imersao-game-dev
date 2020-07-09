@@ -1,37 +1,18 @@
 class Jogo {
   constructor() {
     this.indiceInimigo = 0;
-    this.mapaInimigos = [
-      {
-        inimigo: 0,
-        velocidade: 10
-      },
-      {
-        inimigo: 1,
-        velocidade: 30
-      },
-      {
-        inimigo: 1,
-        velocidade: 15
-      },
-      {
-        inimigo: 2,
-        velocidade: 40
-      }
-    ];
+    this.mapaInimigos = configuracoesJSON.mapaInimigos;
   }
 
   setup() {
     cenario = new Cenario(imagemCenario, 3);
     pontuacao = new Pontuacao();
-    vida = new Vida(3, 3);
+    vida = new Vida(configuracoesJSON.configuracoes.vidaMaxima, configuracoesJSON.configuracoes.vidaInicial);
 
     personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 30, larguraPersonagem, alturaPersonagem, posSpriteX, posSpriteY);
 
     const inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 30, 52, 52, 104, 104, 10);
-
     const inimigoVoador = new Inimigo(matrizInimigoVoador, imagemInimigoVoador, width - 52, 200, 100, 75, 200, 150, 10);
-
     const inimigoTroll = new Inimigo(matrizInimigoTroll, imagemInimigoTroll, width, 0, 200, 200, 400, 400, 15);
 
     inimigosArr.push(inimigo);

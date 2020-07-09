@@ -51,6 +51,8 @@ class Personagem extends Animacao{
     this.invencivel = true;
     setTimeout(() => {
       this.invencivel = false;
+      this.desligaPisca();
+
     }, 1000);
   }
   

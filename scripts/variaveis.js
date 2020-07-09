@@ -13,7 +13,7 @@ let vida;
 let personagem;
 let somDoJogo;
 let somDoPulo;
-
+let configuracoesJSON;
 
 let jogo;
 let cenaAtual = 'telaInicial';
