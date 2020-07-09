@@ -4,7 +4,14 @@ function setup() {
   somDoJogo.loop();
 
   jogo = new Jogo();
+  telaInicial = new TelaInicial();
   jogo.setup();
+  cenas = {
+    jogo,
+    telaInicial
+  }
+
+  botaoGerenciador = new BotaoGerenciador('Iniciar', width/2, height/2);
 }
 
 function keyPressed() {
@@ -12,5 +19,6 @@ function keyPressed() {
 }
 
 function draw() {
-  jogo.draw();
+  cenas[cenaAtual].draw();
+  
 }

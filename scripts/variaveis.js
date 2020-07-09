@@ -1,18 +1,23 @@
+let imagemTelaInicial;
+let fonteTelaInicial;
 let imagemCenario;
+let imagemGameOver;
 let imagemPersonagem;
 let imagemInimigo;
 let imagemInimigoTroll;
 
 let cenario;
-let jogo;
 let pontuacao;
 let personagem;
-// let inimigo;
-// let inimigoVoador;
-// let inimigoTroll;
 let somDoJogo;
 let somDoPulo;
-let imagemGameOver;
+
+
+let jogo;
+let cenaAtual = 'telaInicial';
+let cenas;
+let telaInicial;
+let botaoGerenciador;
 
 //tamanho da exibição do personagem na tela
 const alturaPersonagem = 135; // tamanho X

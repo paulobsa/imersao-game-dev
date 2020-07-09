@@ -5,7 +5,8 @@ function preload() {
   imagemInimigoVoador = loadImage('imagens/inimigos/gotinha-voadora.png');
   imagemInimigoTroll = loadImage('imagens/inimigos/troll.png');
   imagemGameOver = loadImage('imagens/assets/game-over.png');
+  imagemTelaInicial = loadImage('imagens/cenario/telaInicial.png');
+  fonteTelaInicial = loadFont('imagens/assets/fonteTelaInicial.otf');
   somDoPulo = loadSound('sons/somPulo.mp3');
   somDoJogo = loadSound('sons/trilha_jogo.mp3');
-
 }
