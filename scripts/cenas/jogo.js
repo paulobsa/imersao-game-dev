@@ -1,6 +1,24 @@
 class Jogo {
   constructor() {
-    this.inimigoAtual = 0;
+    this.indiceInimigo = 0;
+    this.mapaInimigos = [
+      {
+        inimigo: 0,
+        velocidade: 10
+      },
+      {
+        inimigo: 1,
+        velocidade: 30
+      },
+      {
+        inimigo: 1,
+        velocidade: 15
+      },
+      {
+        inimigo: 2,
+        velocidade: 40
+      }
+    ];
   }
 
   setup() {
@@ -10,11 +28,11 @@ class Jogo {
 
     personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 30, larguraPersonagem, alturaPersonagem, posSpriteX, posSpriteY);
 
-    const inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 30, 52, 52, 104, 104, 10, 100);
+    const inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 30, 52, 52, 104, 104, 10);
 
-    const inimigoVoador = new Inimigo(matrizInimigoVoador, imagemInimigoVoador, width - 52, 200, 100, 75, 200, 150, 10, 100);
+    const inimigoVoador = new Inimigo(matrizInimigoVoador, imagemInimigoVoador, width - 52, 200, 100, 75, 200, 150, 10);
 
-    const inimigoTroll = new Inimigo(matrizInimigoTroll, imagemInimigoTroll, width, 0, 200, 200, 400, 400, 15, 100);
+    const inimigoTroll = new Inimigo(matrizInimigoTroll, imagemInimigoTroll, width, 0, 200, 200, 400, 400, 15);
 
     inimigosArr.push(inimigo);
     inimigosArr.push(inimigoTroll);
@@ -40,18 +58,20 @@ class Jogo {
     personagem.exibe();
     personagem.aplicaGravidade();
 
-    const inimigo = inimigosArr[this.inimigoAtual];
+    const linhaAtual = this.mapaInimigos[this.indiceInimigo];
+    const inimigo = inimigosArr[linhaAtual.inimigo];
     const inimigoVisivel = inimigo.x < -inimigo.largura;
 
     inimigo.exibe();
     inimigo.move();
 
     if (inimigoVisivel) {
-      this.inimigoAtual++;
-      if (this.inimigoAtual > inimigosArr.length - 1) {
-        this.inimigoAtual = 0;
+      this.indiceInimigo++;
+      inimigo.aparece();
+      if (this.indiceInimigo > this.mapaInimigos.length - 1) {
+        this.indiceInimigo = 0;
       }
-      inimigo.velocidade = parseInt(random(5, 30));
+      inimigo.velocidade = linhaAtual.velocidade;
     }
 
     if (personagem.invencivel) {
