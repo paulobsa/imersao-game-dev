@@ -5,9 +5,11 @@ let imagemGameOver;
 let imagemPersonagem;
 let imagemInimigo;
 let imagemInimigoTroll;
+let imagemVida;
 
 let cenario;
 let pontuacao;
+let vida;
 let personagem;
 let somDoJogo;
 let somDoPulo;

@@ -6,6 +6,7 @@ class Jogo {
   setup() {
     cenario = new Cenario(imagemCenario, 3);
     pontuacao = new Pontuacao();
+    vida = new Vida(3, 3);
 
     personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 30, larguraPersonagem, alturaPersonagem, posSpriteX, posSpriteY);
 
@@ -34,6 +35,8 @@ class Jogo {
     pontuacao.exibe();
     pontuacao.adicionarPonto();
 
+    vida.draw();
+
     personagem.exibe();
     personagem.aplicaGravidade();
 
@@ -51,11 +54,18 @@ class Jogo {
       inimigo.velocidade = parseInt(random(5, 30));
     }
 
+    if (personagem.invencivel) {
+      personagem.pisca();
+    }
+
     if (personagem.estaColidindo(inimigo)) {
       // console.log("colidiu");
-      personagem.pisca();
-      image(imagemGameOver, width / 2 - 200, height / 3);
-      // noLoop();
+      vida.perdeVida();
+      personagem.tornarInvencivel();
+      if (vida.vidas === 0) {
+        image(imagemGameOver, width / 2 - 200, height / 3);
+        noLoop();
+      }
     }
   }
 }
